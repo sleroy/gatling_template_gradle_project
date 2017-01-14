@@ -1,0 +1,13 @@
+plugins {
+  id "com.github.lkishalmi.gatling" version "0.4.1"
+}
+
+task(initGatling) {
+
+	file("src/gatling/scala").mkdirs();
+	file("src/gatling/resources/data").mkdirs();
+	file("src/gatling/resources/bodies").mkdirs();
+	file("src/gatling/resources/conf").mkdirs();
+	file("src/gatling/resources/data").mkdirs();
+
+}
