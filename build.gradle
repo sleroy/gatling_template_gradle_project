@@ -1,5 +1,11 @@
+/**
+ * Template to execute Gatling tests
+ * > gradle gatlingClasses
+ * > gradle gatlingRun
+ * > gradle gatlingRun-com.project.simu.MySimulation
+ */
 plugins {
-  id "com.github.lkishalmi.gatling" version "0.4.1"
+    id "com.github.lkishalmi.gatling" version "0.4.1"
 }
 
 /**
@@ -7,11 +13,11 @@ plugins {
  */
 task(initGatling) {
 
-	file("src/gatling/scala").mkdirs();
-	file("src/gatling/resources/data").mkdirs();
-	file("src/gatling/resources/bodies").mkdirs();
-	file("src/gatling/resources/conf").mkdirs();
-	file("src/gatling/resources/data").mkdirs();
+    file("src/gatling/scala").mkdirs();
+    file("src/gatling/resources/data").mkdirs();
+    file("src/gatling/resources/bodies").mkdirs();
+    file("src/gatling/resources/conf").mkdirs();
+    file("src/gatling/resources/data").mkdirs();
 
 }
 
@@ -21,6 +27,7 @@ task(initGatling) {
 gatling {
     toolVersion = '2.2.2'
     jvmArgs = [ '-server', '-Xms512M', '-Xmx512M' ]
+    logLevel = 'DEBUG'
     /* Filtering simulations whether required */
     //simulations = [ 'com.package1.MySimu', 'com.package2.advanced.MySimulation' ] (1)
 
@@ -31,4 +38,17 @@ gatling {
     //   include "**/package1/*Simu.scala"
     //   include "**/package2/*Simulation.scala"
     //}
+}
+
+/**
+ * Add dependencies for the Gatling tests
+ */
+repositories {
+    mavenCentral();
+}
+
+dependencies {
+    //gatling 'com.google.code.gson:gson:2.8.0'
+    //gatlingCompile 'org.apache.commons:commons-lang3:3.4'
+    //gatlingRuntime 'cglib:cglib-nodep:3.2.0'
 }
