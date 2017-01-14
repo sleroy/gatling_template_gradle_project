@@ -2,6 +2,9 @@ plugins {
   id "com.github.lkishalmi.gatling" version "0.4.1"
 }
 
+/**
+ * Task to (re)create the folder structure
+ */
 task(initGatling) {
 
 	file("src/gatling/scala").mkdirs();
@@ -10,4 +13,22 @@ task(initGatling) {
 	file("src/gatling/resources/conf").mkdirs();
 	file("src/gatling/resources/data").mkdirs();
 
+}
+
+/**
+ * Gatling Configuration
+ */
+gatling {
+    toolVersion = '2.2.2'
+    jvmArgs = [ '-server', '-Xms512M', '-Xmx512M' ]
+    /* Filtering simulations whether required */
+    //simulations = [ 'com.package1.MySimu', 'com.package2.advanced.MySimulation' ] (1)
+
+    /**
+     * Filtering simulations with Groovy closure.
+     */
+    //simulations = {
+    //   include "**/package1/*Simu.scala"
+    //   include "**/package2/*Simulation.scala"
+    //}
 }
